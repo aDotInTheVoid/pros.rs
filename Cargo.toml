@@ -5,7 +5,16 @@ authors = ["Nixon <nixon.emoony@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-libc = "0.2.51"
+#libc = "0.2.51"
 
 [build-dependencies]
 bindgen = "0.49.0"
+seahash = "3.0.6"
+walkdir = "2.2.7"
+
+
+# RANDOM NOTES
+# Need to compile to Cortex A9 
+# 128 MB RAM
+# 32 MB FLASH
+# 

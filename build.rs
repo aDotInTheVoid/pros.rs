@@ -3,20 +3,28 @@ extern crate bindgen;
 use std::env;
 use std::path::PathBuf;
 
+use std::io::prelude::*;
+use walkdir::{DirEntry, WalkDir};
+use std::process::Command;
+
 fn main() {
-    // Tell cargo to tell rustc to link the system bzip2
-    // shared library.
-    //println!("cargo:rustc-link-lib=bz2");
+    
+    let out_dir =env::var("OUT_DIR").unwrap();
+    let out_h_loc = out_dir + "/libpros.h";
+    // Preprocess the c code
+    Command::new("gcc")
+        .arg("-I").arg("./include/")
+        .arg("-E").arg("include/rust.h")
+        .arg("-o").arg(out_h_loc.clone())
+        .output()
+        .expect("failed to preprocess code");
 
     // The bindgen::Builder is the main entry point
     // to bindgen, and lets you build up options for
     // the resulting bindings.
     let bindings = bindgen::Builder::default()
-        // The input header we would like to generate
-        // bindings for.
-        
-        //.clang_arg("-I ./include")
-        .header("./all.h")
+
+        .header(out_h_loc.clone())
         // Finish the builder and generate the bindings.
         .generate()
         // Unwrap the Result and panic on failure.

@@ -19,6 +19,7 @@
 #ifndef _PROS_API_H_
 #define _PROS_API_H_
 
+#ifndef NO_STDLIB_BECAUSE_RUST
 #ifdef __cplusplus
 #include <cerrno>
 #include <cmath>
@@ -38,6 +39,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #endif /* __cplusplus */
+#endif /*NO_STDLIB_BECAUSE_RUST*/
 
 #define PROS_VERSION_MAJOR 3
 #define PROS_VERSION_MINOR 1
