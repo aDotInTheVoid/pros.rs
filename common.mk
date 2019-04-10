@@ -11,7 +11,7 @@ SPACE :=
 SPACE +=
 COMMA := ,
 
-LIBRARIES+=$(wildcard $(FWDIR)/*.a)
+RARIES+=$(wildcard $(FWDIR)/*.a)
 wlprefix=-Wl,$(subst $(SPACE),$(COMMA),$1)
 LNK_FLAGS=--gc-sections --start-group $(strip $(LIBRARIES)) -lc -lm -lgcc -lstdc++ -lsupc++ --end-group
 
@@ -142,6 +142,10 @@ endif
 quick: $(DEFAULT_BIN)
 
 all: clean $(DEFAULT_BIN)
+
+info:
+	@echo cc: $(CC)
+	@echo cxxc $
 
 clean:
 	@echo Cleaning project

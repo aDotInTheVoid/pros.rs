@@ -68,3 +68,6 @@ dkms.conf
 
 # MAJOR PROS HACK
 !firmware/libpros.a
+
+# Other stuff
+/bin
