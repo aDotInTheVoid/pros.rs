@@ -33,9 +33,6 @@ EXCLUDE_SRC_FROM_LIB+=$(foreach file, $(SRCDIR)/opcontrol $(SRCDIR)/initialize $
 # that are in the the include directory get exported
 TEMPLATE_FILES=$(INCDIR)/**/*.h $(INCDIR)/**/*.hpp
 
-ECHO=/usr/local/opt/coreutils/libexec/gnubin/echo -e
-
-
 .DEFAULT_GOAL=quick
 
 ################################################################################
