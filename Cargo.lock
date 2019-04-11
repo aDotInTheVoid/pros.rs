@@ -195,7 +195,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "pros_rust_wip"
+name = "pros_rs"
 version = "0.1.0"
 dependencies = [
  "pros_bindgen 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",

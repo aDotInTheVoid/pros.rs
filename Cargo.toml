@@ -1,8 +1,9 @@
 [package]
-name = "pros_rust_wip"
+name = "pros_rs"
 version = "0.1.0"
 authors = ["Nixon <nixon.emoony@gmail.com>"]
 edition = "2018"
+license = "MPL-2.0"
 
 [dependencies]
 #libc = "0.2.51"
