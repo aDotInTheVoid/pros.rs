@@ -26,6 +26,6 @@ fast_finish: true
 #   - sudo apt-get -y install gcc-arm-embedded
 
 script:
-  - cargo build
-  - cargo test
+  - cargo build -vv
+  - cargo test -vv
   - make
