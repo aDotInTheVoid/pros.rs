@@ -6,11 +6,11 @@ edition = "2018"
 license = "MPL-2.0"
 
 [dependencies]
-#libc = "0.2.51"
+libc = "0.2.51"
 
 [build-dependencies]
-pros_bindgen = "0.1.0"
-
+#pros_bindgen = "0.2.0"
+bindgen = "0.49.0"
 
 
 # RANDOM NOTES
