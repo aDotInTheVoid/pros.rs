@@ -18,3 +18,22 @@ bindgen = "0.49.0"
 # 128 MB RAM
 # 32 MB FLASH
 # 
+# rustc --print target-list | grep arm | grep none | grep eabi
+# arm eb v7r-none-eabi 
+# arm eb v7r-none-eabi hf
+# arm    v7r-none-eabi 
+# arm    v7r-none-eabi hf
+
+# eb -> endianness bigly
+# https://stackoverflow.com/questions/44454063/whats-the-difference-between-arm-linux-user-and-armeb-linux-user
+# arm can be either endianness
+# http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0388f/Beibfhac.html
+# little is default
+
+# hf -> hard float
+# i think we want saft, based on this line from commom.mk
+#  -mfloat-abi=softfp
+
+# so i think we want
+# armv7r-none-eabi
+# `rustup target add armv7r-none-eabi`
