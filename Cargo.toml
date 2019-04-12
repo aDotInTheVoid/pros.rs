@@ -6,8 +6,17 @@ edition = "2018"
 license = "MPL-2.0"
 
 [dependencies]
-libc = "0.2.51"
+cortex_a9_types = {path="./cortex_a9_types"}
 
 [build-dependencies]
 #pros_bindgen = "0.2.0"
 bindgen = "0.49.0"
+
+
+[workspace]
+members = [
+    "cortex_a9_types"
+]
+
+[dev-dependencies]
+libc = "0.2"

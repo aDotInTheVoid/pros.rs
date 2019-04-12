@@ -1,0 +1,10 @@
+[package]
+name = "cortex_a9_types"
+version = "0.1.0"
+authors = ["Nixon <nixon.emoony@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+libc = "0.2"
+
+[dev-dependencies]

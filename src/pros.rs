@@ -3,6 +3,8 @@
 #![allow(non_snake_case)]
 #![allow(dead_code)]
 
-use libc;
+
+
+use cortex_a9_types;
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
