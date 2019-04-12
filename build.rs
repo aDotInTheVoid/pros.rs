@@ -31,9 +31,9 @@ pub fn bindgen(){
 
 
     let bindings = bindgen::Builder::default()
-         .ctypes_prefix("::libc")
-         .use_core()
-         .rustfmt_bindings(true)
+        .ctypes_prefix("::libc")
+        .use_core()
+        .rustfmt_bindings(true)
         .header(out_h_loc.clone())
        
         .generate()
