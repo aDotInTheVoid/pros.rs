@@ -1,0 +1,3 @@
+[build]
+target = "armv7r-none-eabi"
+rustdoc = "./.cargo/rustdoc.sh" 

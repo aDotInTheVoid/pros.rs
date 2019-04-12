@@ -20,3 +20,6 @@ members = [
 
 [dev-dependencies]
 libc = "0.2"
+
+[lib]
+crate-type = ["staticlib"]
