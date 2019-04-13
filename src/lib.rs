@@ -3,7 +3,6 @@
 
 mod pros;
 
-
 use core::panic::PanicInfo;
 
 /// This function is called on panic.

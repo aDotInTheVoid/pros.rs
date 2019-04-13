@@ -10,7 +10,6 @@ use std::process::Command;
 const H_FILE_NAME: &str = "/libpros.h";
 const CC: &str = "gcc";
 
-
 // Generate rust bindings for PROS
 fn c_to_rs() {
     // We only want to rerun the build process if the include dir has changes
@@ -53,15 +52,15 @@ fn c_to_rs() {
     println!("Generated PROS bindings")
 }
 
-fn rs_to_c(){
+fn rs_to_c() {
     let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
     println!("{}", crate_dir);
     cbindgen::Builder::new()
-      .with_crate(crate_dir)
-      .with_language(cbindgen::Language::C)
-      .generate()
-      .expect("Unable to generate bindings")
-      .write_to_file("bin/bindings.h");
+        .with_crate(crate_dir)
+        .with_language(cbindgen::Language::C)
+        .generate()
+        .expect("Unable to generate bindings")
+        .write_to_file("bin/bindings.h");
 }
 
 //use pros_bindgen::bindgen;
