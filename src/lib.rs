@@ -11,3 +11,13 @@ use core::panic::PanicInfo;
 fn panic(_info: &PanicInfo) -> ! {
     loop {}
 }
+
+#[no_mangle]
+pub extern "C" fn addition(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+#[no_mangle]
+pub extern "C" fn subtract(a: i32, b: i32) -> i32 {
+    a - b
+}

@@ -1,4 +1,5 @@
 extern crate bindgen;
+extern crate cbindgen;
 
 use std::env;
 use std::path::PathBuf;
@@ -9,7 +10,9 @@ use std::process::Command;
 const H_FILE_NAME: &str = "/libpros.h";
 const CC: &str = "gcc";
 
-pub fn bindgen() {
+
+// Generate rust bindings for PROS
+fn c_to_rs() {
     // We only want to rerun the build process if the include dir has changes
     println!("cargo:rerun-if-changed=include");
 
@@ -50,8 +53,20 @@ pub fn bindgen() {
     println!("Generated PROS bindings")
 }
 
+fn rs_to_c(){
+    let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
+    println!("{}", crate_dir);
+    cbindgen::Builder::new()
+      .with_crate(crate_dir)
+      .with_language(cbindgen::Language::C)
+      .generate()
+      .expect("Unable to generate bindings")
+      .write_to_file("bin/bindings.h");
+}
+
 //use pros_bindgen::bindgen;
 
 fn main() {
-    bindgen();
+    c_to_rs();
+    rs_to_c();
 }
