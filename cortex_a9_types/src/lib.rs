@@ -34,17 +34,20 @@ pub use core::ffi::c_void;
 
 #[cfg(target_arch = "arm")]
 mod cortex_types {
-    // Unknown, should add sources
-    pub type c_char = u8; // char
-    pub type c_double = f64; // double
-    pub type c_float = f32; // float
-    pub type c_int = i32; // int
-    pub type c_uint = u32; // unsigned int
 
-    // Unsigned versions of unknowns
-    pub type c_ulong = u32; // unsigned long int
-    pub type c_ulonglong = u64; // unsigned long long int
-    pub type c_ushort = u16; // unsigned short int
+    // Floats, confirmed by elipsons in float.h
+    // https://doc.rust-lang.org/src/core/num/f64.rs.html#30
+    pub type c_double = f64; // double
+    // https://doc.rust-lang.org/src/core/num/f32.rs.html#30
+    pub type c_float = f32; // float
+
+
+    // Confirmed by limits.h <type>_MAX
+    pub type c_char = u8; // char
+    pub type c_int = i32; // int
+
+
+    //Confirmed by limits.h `typedef`
 
     /// `typedef long int __int32_t;`
     pub type c_long = i32;
@@ -60,6 +63,13 @@ mod cortex_types {
 
     /// `typedef unsigned char __uint8_t;`
     pub type c_uchar = u8; // unsigned char
+
+    // Unsigned versions of knowns
+    pub type c_ulong = u32; // unsigned long int
+    pub type c_ulonglong = u64; // unsigned long long int
+    pub type c_ushort = u16; // unsigned short int
+    pub type c_uint = u32; // unsigned int
+
 
 }
 
