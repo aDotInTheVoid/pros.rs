@@ -1,4 +1,5 @@
 #include "main.h"
+#include "rust_bindings.h"
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -14,7 +15,8 @@
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	int x;
 	while (true) {
-
+		x = addition(3, 6);
 	}
 }

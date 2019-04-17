@@ -38,4 +38,7 @@ TEMPLATE_FILES=$(INCDIR)/**/*.h $(INCDIR)/**/*.hpp
 ################################################################################
 ################################################################################
 ########## Nothing below this line should be edited by typical users ###########
+
+# To bad lolz
+-include ./rust.mk
 -include ./common.mk

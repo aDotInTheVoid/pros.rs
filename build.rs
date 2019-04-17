@@ -12,8 +12,7 @@ const CC: &str = "gcc";
 
 // Generate rust bindings for PROS
 fn c_to_rs() {
-    // We only want to rerun the build process if the include dir has changes
-    println!("cargo:rerun-if-changed=include");
+ 
 
     println!("Generating PROS bindings");
 
@@ -60,12 +59,15 @@ fn rs_to_c() {
         .with_language(cbindgen::Language::C)
         .generate()
         .expect("Unable to generate bindings")
-        .write_to_file("bin/bindings.h");
+        .write_to_file("bin/rust_bindings.h");
 }
 
 //use pros_bindgen::bindgen;
 
 fn main() {
+       // We only want to rerun the build process if the include dir has changes
+    println!("cargo:rerun-if-changed=include");
+    println!("cargo:rerun-if-changed=bin/rust_bindings.h");
     c_to_rs();
     rs_to_c();
 }
