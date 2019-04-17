@@ -24,3 +24,7 @@ libc = "0.2"
 
 [lib]
 crate-type = ["staticlib"]
+
+[profile.release]
+opt-level = 's'
+lto = true
