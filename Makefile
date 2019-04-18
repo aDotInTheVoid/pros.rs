@@ -11,6 +11,7 @@ FWDIR:=$(ROOT)/firmware
 BINDIR=$(ROOT)/bin
 SRCDIR=$(ROOT)/c_src
 INCDIR=$(ROOT)/include
+ARTIFACTS_DIR=$(ROOT)/build/artifacts
 
 WARNFLAGS+=
 EXTRA_CFLAGS=
@@ -57,5 +58,5 @@ STRIP:=$(ARCHTUPLE)strip
 ########## Nothing below this line should be edited by typical users ###########
 
 # To bad lolz
--include ./rust.mk
--include ./common.mk
+-include ./build/rust.mk
+-include ./build/common.mk

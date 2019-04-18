@@ -93,7 +93,9 @@ D =
 VV =
 endif
 
-INCLUDE=$(foreach dir,$(INCDIR) $(EXTRA_INCDIR),-iquote"$(dir)")
+INCLUDE=$(foreach dir,$(INCDIR) $(EXTRA_INCDIR) $(ARTIFACTS_DIR),-iquote"$(dir)")
+
+$(INCLUDE): rust
 
 ASMSRC=$(foreach asmext,$(ASMEXTS),$(call rwildcard, $(SRCDIR),*.$(asmext), $1))
 ASMOBJ=$(addprefix $(BINDIR)/,$(patsubst $(SRCDIR)/%,%.o,$(call ASMSRC,$1)))
@@ -135,6 +137,7 @@ all: clean $(DEFAULT_BIN)
 clean:
 	@echo Cleaning project
 	-$Drm -rf $(BINDIR)
+	-$Drm -rf $(ARTIFACTS_DIR)
 
 ifeq ($(IS_LIBRARY),1)
 ifeq ($(LIBNAME),libbest)
@@ -213,7 +216,7 @@ endef
 $(foreach asmext,$(ASMEXTS),$(eval $(call asm_rule,$(asmext))))
 
 define c_rule
-$(BINDIR)/%.$1.o: $(SRCDIR)/%.$1
+$(BINDIR)/%.$1.o: $(SRCDIR)/%.$1 $(INCLUDE)
 	$(VV)mkdir -p $$(dir $$@)
 	@echo -n "Compiling $$< "
 	$$(call test_output,$D$(CC) -c $(INCLUDE) -iquote"$(INCDIR)/$$(dir $$*)" $(CFLAGS) $(EXTRA_CFLAGS) -o $$@ $$<,$(OK_STRING))
@@ -221,7 +224,7 @@ endef
 $(foreach cext,$(CEXTS),$(eval $(call c_rule,$(cext))))
 
 define cxx_rule
-$(BINDIR)/%.$1.o: $(SRCDIR)/%.$1
+$(BINDIR)/%.$1.o: $(SRCDIR)/%.$1 $(INCLUDE)
 	$(VV)mkdir -p $$(dir $$@)
 	@echo -n "Compiling $$< "
 	$$(call test_output,$D$(CXX) -c $(INCLUDE) -iquote"$(INCDIR)/$$(dir $$*)" $(CXXFLAGS) $(EXTRA_CXXFLAGS) -o $$@ $$<,$(OK_STRING))

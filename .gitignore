@@ -72,3 +72,4 @@ dkms.conf
 # Other stuff
 /bin
 /include/rust_bindings.h
+/build/artifacts

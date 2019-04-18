@@ -59,7 +59,7 @@ fn rs_to_c() {
         .with_language(cbindgen::Language::C)
         .generate()
         .expect("Unable to generate bindings")
-        .write_to_file("bin/rust_bindings.h");
+        .write_to_file("build/artifacts/rust_bindings.h");
 }
 
 //use pros_bindgen::bindgen;
@@ -67,7 +67,7 @@ fn rs_to_c() {
 fn main() {
        // We only want to rerun the build process if the include dir has changes
     println!("cargo:rerun-if-changed=include");
-    println!("cargo:rerun-if-changed=bin/rust_bindings.h");
+    println!("cargo:rerun-if-changed=build");
     c_to_rs();
     rs_to_c();
 }
