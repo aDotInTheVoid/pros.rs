@@ -29,7 +29,9 @@ $(RLIB): cargo
 $(BINDINGS_OUT): $(BINDINGS)
 	cp $(BINDINGS) $(BINDINGS_OUT)
 $(RLIB_OUT): $(RLIB)
-	cp $(RLIB) $(RLIB_OUT)
+	# This is a major hack. We remove all arch info to ensure 
+	# gcc is fine with building
+	$(OBJCOPY) -R .ARM.attributes $(RLIB) $(RLIB_OUT)
 
 .PHONY: rust
 rust: $(RLIB_OUT) $(BINDINGS_OUT)

@@ -1,4 +1,3 @@
-ARCHTUPLE=arm-none-eabi-
 DEVICE=VEX EDR V5
 
 MFLAGS=-mcpu=cortex-a9 -mfpu=neon-fp16 -mfloat-abi=softfp
@@ -22,17 +21,6 @@ LDFLAGS=$(MFLAGS) $(WARNFLAGS) -nostdlib
 SIZEFLAGS=-d --common
 NUMFMTFLAGS=--to=iec --format %.2f --suffix=B
 
-AR:=$(ARCHTUPLE)ar
-# using arm-none-eabi-as generates a listing by default. This produces a super verbose output.
-# Using gcc accomplishes the same thing without the extra output
-AS:=$(ARCHTUPLE)gcc
-CC:=$(ARCHTUPLE)gcc
-CXX:=$(ARCHTUPLE)g++
-LD:=$(ARCHTUPLE)g++
-OBJCOPY:=$(ARCHTUPLE)objcopy
-SIZETOOL:=$(ARCHTUPLE)size
-READELF:=$(ARCHTUPLE)readelf
-STRIP:=$(ARCHTUPLE)strip
 
 ifneq (, $(shell command -v gnumfmt 2> /dev/null))
 	SIZES_NUMFMT:=| gnumfmt --field=-4 --header $(NUMFMTFLAGS)
@@ -252,5 +240,6 @@ endef
 # these rules are for build-compile-commands, which just print out sysroot information
 cc-sysroot:
 	@echo | $(CC) -c -x c $(CFLAGS) $(EXTRA_CFLAGS) --verbose -o /dev/null -
+	@echo $(LIBRARIES)
 cxx-sysroot:
 	@echo | $(CXX) -c -x c++ $(CXXFLAGS) $(EXTRA_CXXFLAGS) --verbose -o /dev/null -
