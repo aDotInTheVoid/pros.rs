@@ -1,3 +1,8 @@
+# [DEPRICATED USE THIS](https://github.com/aDotInTheVoid/pros-rs)
+
+---
+---
+---
 # pros.rs
 [![Build Status](https://travis-ci.com/aDotInTheVoid/pros.rs.svg?branch=master)](https://travis-ci.com/aDotInTheVoid/pros.rs)
 
