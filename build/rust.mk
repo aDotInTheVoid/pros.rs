@@ -37,4 +37,3 @@ rust: _compile
 
 
 $(RLIB_OUT): rust
-
