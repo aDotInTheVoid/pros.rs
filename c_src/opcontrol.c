@@ -15,8 +15,8 @@
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    int x;
-    while (true) {
-        x = addition(3, 6);
-    }
+  int x;
+  while (true) {
+    x = addition(3, 6);
+  }
 }
