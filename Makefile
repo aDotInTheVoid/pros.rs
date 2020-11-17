@@ -11,6 +11,7 @@ FWDIR:=$(ROOT)/firmware
 BINDIR=$(ROOT)/bin
 SRCDIR=$(ROOT)/c_src
 INCDIR=$(ROOT)/include
+ARTIFACTS_DIR=$(ROOT)/build/artifacts
 
 WARNFLAGS+=
 EXTRA_CFLAGS=
@@ -35,7 +36,27 @@ TEMPLATE_FILES=$(INCDIR)/**/*.h $(INCDIR)/**/*.hpp
 
 .DEFAULT_GOAL=quick
 
+
+################################################################################
+# Some Stuff I need for rust and c
+
+ARCHTUPLE=arm-none-eabi-
+AR:=$(ARCHTUPLE)ar
+# using arm-none-eabi-as generates a listing by default. This produces a super verbose output.
+# Using gcc accomplishes the same thing without the extra output
+AS:=$(ARCHTUPLE)gcc
+CC:=$(ARCHTUPLE)gcc
+CXX:=$(ARCHTUPLE)g++
+LD:=$(ARCHTUPLE)g++
+OBJCOPY:=$(ARCHTUPLE)objcopy
+SIZETOOL:=$(ARCHTUPLE)size
+READELF:=$(ARCHTUPLE)readelf
+STRIP:=$(ARCHTUPLE)strip
+
 ################################################################################
 ################################################################################
 ########## Nothing below this line should be edited by typical users ###########
--include ./common.mk
+
+# To bad lolz
+-include ./build/rust.mk
+-include ./build/common.mk

@@ -17,5 +17,4 @@ rust:
 
 script:
   - cargo test --target x86_64-unknown-linux-gnu
-  - cargo build --target armv7r-none-eabi
   - make all
